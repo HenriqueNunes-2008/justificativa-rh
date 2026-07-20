@@ -104,3 +104,24 @@ window.addEventListener("click", (e) => {
     }
 
 });
+
+const parametros =
+    new URLSearchParams(
+        window.location.search
+    );
+
+if (parametros.get("login") === "1") {
+
+    cadastroModal?.classList.remove("active");
+
+    loginModal?.classList.add("active");
+
+}
+
+if (parametros.get("cadastro") === "1") {
+
+    loginModal?.classList.remove("active");
+
+    cadastroModal?.classList.add("active");
+
+}

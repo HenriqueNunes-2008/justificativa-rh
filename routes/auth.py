@@ -1,6 +1,5 @@
 from flask import (
     Blueprint,
-    render_template,
     request,
     redirect,
     url_for,
@@ -47,7 +46,10 @@ def login():
             )
 
             return redirect(
-                url_for("auth.login")
+                url_for(
+                    "justificativas.index",
+                    login="1"
+                )
             )
 
         if not check_password_hash(
@@ -61,7 +63,10 @@ def login():
             )
 
             return redirect(
-                url_for("auth.login")
+                url_for(
+                    "justificativas.index",
+                    login="1"
+                )
             )
 
         if usuario.status == "PENDENTE":
@@ -72,18 +77,24 @@ def login():
             )
 
             return redirect(
-                url_for("auth.login")
+                url_for(
+                    "justificativas.index",
+                    login="1"
+                )
             )
 
         if usuario.status == "BLOQUEADO":
 
             flash(
-                "Usuário bloqueado.",
+                "Conta bloqueada.",
                 "error"
             )
 
             return redirect(
-                url_for("auth.login")
+                url_for(
+                    "justificativas.index",
+                    login="1"
+                )
             )
 
         session["usuario_id"] = usuario.id
@@ -133,7 +144,10 @@ def cadastro():
             )
 
             return redirect(
-                url_for("auth.cadastro")
+                url_for(
+                    "justificativas.index",
+                    cadastro="1"
+                )
             )
 
         usuario = Usuario(
@@ -155,15 +169,15 @@ def cadastro():
         db.session.commit()
 
         flash(
-
             "Cadastro realizado com sucesso. Aguarde aprovação do administrador.",
-
             "success"
-
         )
 
         return redirect(
-            url_for("auth.login")
+            url_for(
+                "justificativas.index",
+                login="1"
+            )
         )
 
     return redirect(
@@ -185,5 +199,8 @@ def logout():
     )
 
     return redirect(
-        url_for("auth.login")
+        url_for(
+            "justificativas.index",
+            login="1"
+        )
     )
