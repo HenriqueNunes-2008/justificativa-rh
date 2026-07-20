@@ -1,0 +1,39 @@
+<div class="modal" id="logoutModal">
+
+    <div class="modal-content modal-small">
+
+        <h2>
+
+            Sair do sistema
+
+        </h2>
+
+        <p class="logout-text">
+
+            Tem certeza que deseja sair?
+
+        </p>
+
+        <div class="logout-buttons">
+
+            <button
+                id="cancelarLogout"
+                class="btn-secundario">
+
+                Cancelar
+
+            </button>
+
+            <a
+                href="{{ url_for('auth.logout') }}"
+                class="btn-principal">
+
+                Sair
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

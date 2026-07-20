@@ -647,3 +647,86 @@ width:96%;
     background:#C62828;
 
 }
+/* ===========================
+   Modal Logout
+=========================== */
+
+.modal-small{
+
+    max-width:420px;
+
+    text-align:center;
+
+}
+
+.logout-text{
+
+    margin:25px 0;
+
+    color:#666;
+
+    font-size:16px;
+
+    line-height:1.5;
+
+}
+
+.logout-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    margin-top:25px;
+
+}
+
+.logout-buttons a{
+
+    text-decoration:none;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.logout-buttons .btn-secundario{
+
+    min-width:120px;
+
+}
+
+.logout-buttons .btn-principal{
+
+    min-width:120px;
+
+}
+
+.config-button{
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+
+    color:var(--roxo);
+
+    font-size:20px;
+
+    transition:.25s;
+
+}
+
+.config-button:hover{
+
+    color:var(--azul);
+
+    transform:rotate(45deg);
+
+}
