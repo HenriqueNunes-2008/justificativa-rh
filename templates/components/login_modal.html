@@ -1,0 +1,104 @@
+<div
+    class="modal"
+    id="loginModal">
+
+    <div class="modal-content">
+
+        <button
+            class="fechar-modal"
+            id="fecharLogin">
+
+            &times;
+
+        </button>
+
+        <h2>
+
+            Login Administrativo
+
+        </h2>
+
+        {% with mensagens = get_flashed_messages(with_categories=true) %}
+
+            {% if mensagens %}
+
+                {% for categoria, mensagem in mensagens %}
+
+                    <div class="alert {{ categoria }}">
+
+                        {{ mensagem }}
+
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endwith %}
+
+        <form
+            method="POST"
+            action="{{ url_for('auth.login') }}">
+
+            <input
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                required>
+
+            <div class="password">
+
+                <input
+                    type="password"
+                    id="loginSenha"
+                    name="senha"
+                    placeholder="Senha"
+                    required>
+
+                <i
+                    class="fa-solid fa-eye toggle-password"
+                    data-target="loginSenha">
+
+                </i>
+
+            </div>
+
+            <button
+                type="submit"
+                class="btn-principal">
+
+                Entrar
+
+            </button>
+
+        </form>
+
+        <p>
+
+            Não possui cadastro?
+
+            <a
+                href="#"
+                id="abrirCadastro">
+
+                Cadastre-se
+
+            </a>
+
+        </p>
+
+        <p>
+
+            <a
+                href="#"
+                id="abrirRecuperacao">
+
+                Esqueci minha senha
+
+            </a>
+
+        </p>
+
+    </div>
+
+</div>

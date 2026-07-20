@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="admin-layout">
+
+    {% include 'components/admin_sidebar.html' %}
+
+    <main class="admin-main">
+
+        {% include 'components/admin_topbar.html' %}
+
+        {% include 'components/admin_cards.html' %}
+
+        {% include 'components/admin_table.html' %}
+
+        {% include 'components/visualizar_modal.html' %}
+
+        {% include 'components/confirmar_exclusao_modal.html' %}
+
+    </main>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script
+    type="module"
+    src="{{ url_for('static', filename='js/admin/dashboard.js') }}">
+</script>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.env
+instance/
+
+static/assinaturas/*
+!static/assinaturas/.gitkeep
+
+static/pfds/*
+!static/pdfs/.gitkeep
+
+justificativas.db

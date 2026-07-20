@@ -1,0 +1,157 @@
+<main class="container">
+
+    <div class="card">
+
+        <h1>Justificativa de Ausência / Atividade Externa</h1>
+
+        <form
+            action="{{ url_for('justificativas.salvar_justificativa') }}"
+            method="POST"
+            id="formJustificativa">
+
+            <div class="grid">
+
+                <div class="campo">
+
+                    <label for="nome">Nome</label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Nome completo"
+                        autocomplete="name"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="cargo">Cargo</label>
+
+                    <input
+                        type="text"
+                        id="cargo"
+                        name="cargo"
+                        placeholder="Cargo"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="matricula">Matrícula</label>
+
+                    <input
+                        type="text"
+                        id="matricula"
+                        name="matricula"
+                        placeholder="Matrícula"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="competencia">Competência</label>
+
+                    <input
+                        type="text"
+                        id="competencia"
+                        name="competencia"
+                        placeholder="05/2026"
+                        maxlength="7"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="data">Data</label>
+
+                    <input
+                        type="date"
+                        id="data"
+                        name="data"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="entrada">Hora Entrada</label>
+
+                    <input
+                        type="text"
+                        id="entrada"
+                        name="hora_entrada"
+                        placeholder="08:00"
+                        maxlength="5"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="saida">Hora Saída</label>
+
+                    <input
+                        type="text"
+                        id="saida"
+                        name="hora_saida"
+                        placeholder="17:30"
+                        maxlength="5"
+                        required>
+
+                </div>
+
+            </div>
+
+            <div class="campo">
+
+                <label for="justificativa">Justificativa</label>
+
+                <textarea
+                    id="justificativa"
+                    name="justificativa"
+                    rows="6"
+                    placeholder="Descreva o motivo da ausência ou atividade externa..."
+                    required></textarea>
+
+            </div>
+
+            <div class="campo">
+
+                <label>Assinatura</label>
+
+                <canvas id="assinaturaCanvas"></canvas>
+
+                <input
+                    type="hidden"
+                    id="assinaturaInput"
+                    name="assinatura">
+
+                <button
+                    type="button"
+                    id="limparAssinatura"
+                    class="btn-secundario">
+
+                    Limpar assinatura
+
+                </button>
+
+            </div>
+
+            <button
+                type="submit"
+                class="btn-principal">
+
+                Salvar Justificativa
+
+            </button>
+
+        </form>
+
+    </div>
+
+</main>

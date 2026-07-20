@@ -1,0 +1,117 @@
+<div
+    class="modal"
+    id="cadastroModal">
+
+    <div class="modal-content">
+
+        <button
+            class="fechar-modal"
+            id="fecharCadastro">
+
+            &times;
+
+        </button>
+
+        <h2>
+
+            Cadastro
+
+        </h2>
+
+        {% with mensagens = get_flashed_messages(with_categories=true) %}
+
+            {% if mensagens %}
+
+                {% for categoria, mensagem in mensagens %}
+
+                    <div class="alert {{ categoria }}">
+
+                        {{ mensagem }}
+
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endwith %}
+
+        <form
+            method="POST"
+            action="{{ url_for('auth.cadastro') }}">
+
+            <input
+                type="text"
+                name="nome"
+                placeholder="Nome completo"
+                required>
+
+            <input
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                required>
+
+            <div class="password">
+
+                <input
+                    type="password"
+                    id="cadSenha"
+                    name="senha"
+                    placeholder="Senha"
+                    minlength="6"
+                    required>
+
+                <i
+                    class="fa-solid fa-eye toggle-password"
+                    data-target="cadSenha">
+
+                </i>
+
+            </div>
+
+            <button
+                type="submit"
+                class="btn-principal">
+
+                Solicitar Cadastro
+
+            </button>
+
+        </form>
+
+        <p>
+
+            Após o cadastro, sua conta ficará
+
+            <strong>
+
+                pendente de aprovação.
+
+            </strong>
+
+        </p>
+
+        <p>
+
+            O acesso será liberado pelo administrador de TI.
+
+        </p>
+
+        <p>
+
+    Já possui conta?
+
+    <a
+        href="#"
+        id="abrirLogin">
+
+        Entrar
+
+    </a>
+
+</p>
+
+    </div>
+
+</div>

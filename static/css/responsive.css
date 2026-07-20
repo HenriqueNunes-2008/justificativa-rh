@@ -1,0 +1,42 @@
+@media (max-width: 768px){
+
+    .topbar{
+
+        padding:0 20px;
+
+    }
+
+    .grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .card{
+
+        padding:20px;
+
+    }
+
+}
+@media(max-width:950px){
+
+.admin-layout{
+
+flex-direction:column;
+
+}
+
+.sidebar{
+
+width:100%;
+
+}
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+}

@@ -1,0 +1,39 @@
+<aside class="sidebar">
+
+    <div class="sidebar-logo">
+
+        <img
+        src="{{ url_for('static', filename='img/logo.png') }}">
+
+    </div>
+
+    <h3>
+
+        Competências
+
+    </h3>
+
+    <nav>
+
+        <ul>
+
+        {% for item in competencias %}
+
+            <li>
+
+                <a
+                href="{{ url_for('admin.painel', competencia=item[0]) }}">
+
+                    {{ item[0] }}
+
+                </a>
+
+            </li>
+
+        {% endfor %}
+
+        </ul>
+
+    </nav>
+
+</aside>

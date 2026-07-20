@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="admin-page">
+
+    {% include "components/ti_header.html" %}
+
+    <main class="admin-content">
+
+        {% include "components/ti_cards.html" %}
+
+        {% include "components/ti_table.html" %}
+
+        {% include "components/redefinir_senha_modal.html" %}
+
+    </main>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script
+    type="module"
+    src="{{ url_for('static', filename='js/ti/dashboard.js') }}">
+</script>
+
+<script 
+    type=""module
+    src="{{ url_for('static',filename='js/ti/usuarios.js') }}">
+</script>
+
+{% endblock %}

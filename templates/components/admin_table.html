@@ -1,0 +1,80 @@
+<div class="table-container">
+
+    <table class="admin-table">
+
+        <thead>
+
+            <tr>
+
+                <th>Nome</th>
+
+                <th>Matrícula</th>
+
+                <th>Cargo</th>
+
+                <th>Competência</th>
+
+                <th>Data</th>
+
+                <th>Ações</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for j in justificativas %}
+
+            <tr id="linha-{{ j.id }}">
+
+                <td>{{ j.nome }}</td>
+
+                <td>{{ j.matricula }}</td>
+
+                <td>{{ j.cargo }}</td>
+
+                <td>{{ j.competencia }}</td>
+
+                <td>{{ j.data.strftime("%d/%m/%Y") }}</td>
+
+                <td class="acoes">
+
+                    <button
+                        class="btn-view"
+                        data-id="{{ j.id }}"
+                        title="Visualizar">
+
+                        <i class="fa-solid fa-eye"></i>
+
+                    </button>
+
+                    <button
+                        class="btn-pdf"
+                        data-id="{{ j.id }}"
+                        title="Gerar PDF">
+
+                        <i class="fa-solid fa-file-pdf"></i>
+
+                    </button>
+
+                    <button
+                        class="btn-delete"
+                        data-id="{{ j.id }}"
+                        title="Arquivar">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
