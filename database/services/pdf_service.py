@@ -1,13 +1,11 @@
 import os
+import tempfile
+import requests
 
 from reportlab.lib.colors import HexColor
-
 from reportlab.lib.enums import TA_CENTER
-
 from reportlab.lib.styles import getSampleStyleSheet
-
 from reportlab.lib.units import cm
-
 from reportlab.platypus import (
     SimpleDocTemplate,
     Paragraph,
@@ -46,7 +44,9 @@ def gerar_pdf(justificativa, caminho_saida):
         )
     )
 
-    elementos.append(Spacer(1, 0.7 * cm))
+    elementos.append(
+        Spacer(1, 0.7 * cm)
+    )
 
     campos = [
 
@@ -69,13 +69,20 @@ def gerar_pdf(justificativa, caminho_saida):
     for titulo_campo, valor in campos:
 
         elementos.append(
+
             Paragraph(
+
                 f"<b>{titulo_campo}:</b> {valor}",
+
                 normal
+
             )
+
         )
 
-    elementos.append(Spacer(1, 0.5 * cm))
+    elementos.append(
+        Spacer(1, 0.5 * cm)
+    )
 
     elementos.append(
         Paragraph(
@@ -91,39 +98,88 @@ def gerar_pdf(justificativa, caminho_saida):
         )
     )
 
-    elementos.append(Spacer(1, 1 * cm))
-
-    assinatura = os.path.join(
-        "static",
-        justificativa.assinatura
+    elementos.append(
+        Spacer(1, 1 * cm)
     )
 
-    if os.path.exists(assinatura):
+    caminho_temporario = None
 
-        elementos.append(
-            Paragraph(
-                "<b>Assinatura</b>",
-                normal
-            )
+    try:
+
+        resposta = requests.get(
+            justificativa.assinatura,
+            timeout=10
         )
 
-        elementos.append(
-            Image(
-                assinatura,
-                width=8 * cm,
-                height=3 * cm
-            )
-        )
+        if resposta.status_code == 200:
 
-    elementos.append(Spacer(1, 1 * cm))
+            with tempfile.NamedTemporaryFile(
+                suffix=".png",
+                delete=False
+            ) as arquivo:
+
+                arquivo.write(
+                    resposta.content
+                )
+
+                caminho_temporario = arquivo.name
+
+            elementos.append(
+
+                Paragraph(
+                    "<b>Assinatura</b>",
+                    normal
+                )
+
+            )
+
+            elementos.append(
+
+                Image(
+                    caminho_temporario,
+                    width=8 * cm,
+                    height=3 * cm
+                )
+
+            )
+
+    except Exception as erro:
+
+        print(
+            "Erro ao carregar assinatura:",
+            erro
+        )
 
     elementos.append(
-        Paragraph(
-            f"Emitido em {justificativa.criado_em.strftime('%d/%m/%Y %H:%M')}",
-            normal
-        )
+        Spacer(1, 1 * cm)
     )
 
-    pdf.build(elementos)
+    elementos.append(
+
+        Paragraph(
+
+            f"Emitido em {justificativa.criado_em.strftime('%d/%m/%Y %H:%M')}",
+
+            normal
+
+        )
+
+    )
+
+    pdf.build(
+        elementos
+    )
+
+    if caminho_temporario:
+
+        try:
+
+            os.remove(
+                caminho_temporario
+            )
+
+        except Exception:
+
+            pass
 
     return caminho_saida

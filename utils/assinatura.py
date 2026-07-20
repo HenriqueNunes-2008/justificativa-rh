@@ -1,14 +1,13 @@
-import os
 import base64
-from datetime import datetime
+import tempfile
 
-from flask import current_app
+import cloudinary.uploader
 
 
 def salvar_assinatura(base64_string):
     """
     Recebe uma assinatura em Base64,
-    salva como PNG e retorna o caminho do arquivo.
+    envia ao Cloudinary e retorna a URL.
     """
 
     if "," in base64_string:
@@ -16,37 +15,28 @@ def salvar_assinatura(base64_string):
 
     imagem = base64.b64decode(base64_string)
 
-    nome = datetime.now().strftime(
-        "%Y%m%d_%H%M%S_%f"
-    ) + ".png"
+    with tempfile.NamedTemporaryFile(
+        suffix=".png",
+        delete=False
+    ) as arquivo:
 
-    pasta = os.path.join(
-        current_app.static_folder,
-        "assinaturas"
-    )
-
-    os.makedirs(pasta, exist_ok=True)
-
-    caminho = os.path.join(
-        pasta,
-        nome
-    )
-
-    with open(caminho, "wb") as arquivo:
         arquivo.write(imagem)
 
-    return f"assinaturas/{nome}"
+        caminho_temporario = arquivo.name
+
+    resultado = cloudinary.uploader.upload(
+
+        caminho_temporario,
+
+        folder="assinaturas"
+
+    )
+
+    return resultado["secure_url"]
 
 
 def excluir_assinatura(caminho):
     """
-    Exclui o arquivo de assinatura do disco.
+    Exclusão será implementada futuramente.
     """
-
-    arquivo = os.path.join(
-        current_app.static_folder,
-        caminho
-    )
-
-    if os.path.exists(arquivo):
-        os.remove(arquivo)
+    pass
