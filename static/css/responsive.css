@@ -142,6 +142,46 @@ canvas{
 
     }
 
+    .admin-layout{
+
+        flex-direction:column;
+
+        width:100%;
+
+        max-width:100%;
+
+        min-width:0;
+
+        box-sizing:border-box;
+
+    }
+
+    .sidebar{
+
+        width:100%;
+
+        max-width:100%;
+
+        min-width:100%;
+
+        flex:none;
+
+        box-sizing:border-box;
+
+    }
+
+    .admin-main{
+
+        width:100%;
+
+        max-width:100%;
+
+        min-width:0;
+
+        box-sizing:border-box;
+
+    }
+
     .sidebar-top{
 
         display:flex;
@@ -153,6 +193,10 @@ canvas{
         gap:16px;
 
         flex-wrap:wrap;
+
+        width:100%;
+
+        box-sizing:border-box;
 
     }
 
@@ -182,6 +226,10 @@ canvas{
 
         margin:0;
 
+        width:100%;
+
+        box-sizing:border-box;
+
     }
 
     .sidebar-top nav li{
@@ -194,13 +242,48 @@ canvas{
 
     .cards{
 
+        width:100%;
+
+        max-width:100%;
+
+        min-width:0;
+
+        box-sizing:border-box;
+
         grid-template-columns:repeat(2,minmax(0,1fr));
+
+    }
+
+    .cards .card-info{
+
+        min-width:0;
+
+        box-sizing:border-box;
 
     }
 
     .cards > .card-info:nth-child(3){
 
         grid-column:1/-1;
+
+        width:100%;
+
+        max-width:100%;
+
+        box-sizing:border-box;
+
+    }
+
+    .admin-main,
+    .cards,
+    .sidebar,
+    .cards .card-info{
+
+        min-width:0;
+
+        max-width:100%;
+
+        box-sizing:border-box;
 
     }
 
