@@ -114,3 +114,94 @@ canvas{
     }
 
 }
+
+#abrirAssinatura{
+
+    display:none;
+
+}
+
+@media(max-width:768px){
+
+    #abrirAssinatura{
+
+        display:inline-flex;
+
+    }
+
+    #assinaturaCanvas,
+    .signature-clear-button{
+
+        display:none;
+
+    }
+
+    .assinatura-field{
+
+        gap:12px;
+
+    }
+
+    .sidebar-top{
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:space-between;
+
+        gap:16px;
+
+        flex-wrap:wrap;
+
+    }
+
+    .sidebar-top nav{
+
+        flex:1;
+
+        min-width:0;
+
+    }
+
+    .sidebar-competencias{
+
+        flex:1;
+
+        min-width:0;
+
+    }
+
+    .sidebar-top nav ul{
+
+        display:flex;
+
+        flex-wrap:wrap;
+
+        gap:10px;
+
+        margin:0;
+
+    }
+
+    .sidebar-top nav li{
+
+        padding:10px 14px;
+
+        margin-bottom:0;
+
+    }
+
+    .cards{
+
+        grid-template-columns:repeat(2,minmax(0,1fr));
+
+    }
+
+    .cards > .card-info:nth-child(3){
+
+        grid-column:1/-1;
+
+    }
+
+}

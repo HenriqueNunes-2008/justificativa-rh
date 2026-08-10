@@ -140,7 +140,8 @@ font-size:15px;
 box-sizing:border-box;
 
 }
-#assinaturaCanvas{
+#assinaturaCanvas,
+#assinaturaModalCanvas{
 
 width:100%;
 
@@ -151,6 +152,14 @@ border:2px dashed var(--cinza);
 border-radius:10px;
 
 background:white;
+
+touch-action:none;
+
+}
+
+body.signature-modal-open{
+
+overflow:hidden;
 
 }
 .btn-principal{

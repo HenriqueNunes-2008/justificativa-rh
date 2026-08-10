@@ -120,9 +120,18 @@
 
             </div>
 
-            <div class="campo">
+            <div class="campo assinatura-field">
 
                 <label>Assinatura</label>
+
+                <button
+                    type="button"
+                    id="abrirAssinatura"
+                    class="btn-principal mobile-signature-button">
+
+                    Assinar
+
+                </button>
 
                 <canvas id="assinaturaCanvas"></canvas>
 
@@ -134,11 +143,72 @@
                 <button
                     type="button"
                     id="limparAssinatura"
-                    class="btn-secundario">
+                    class="btn-secundario signature-clear-button">
 
                     Limpar assinatura
 
                 </button>
+
+            </div>
+
+            <div class="modal" id="assinaturaModal">
+
+                <div class="modal-box modal-small">
+
+                    <div class="modal-header">
+
+                        <h3>Assinatura</h3>
+
+                        <button
+                            type="button"
+                            id="fecharAssinaturaModal"
+                            class="fechar-modal"
+                            aria-label="Fechar modal">
+
+                            &times;
+
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                        <canvas id="assinaturaModalCanvas"></canvas>
+
+                        <div class="modal-actions assinatura-modal-actions">
+
+                            <button
+                                type="button"
+                                id="limparAssinaturaModal"
+                                class="btn-secondary">
+
+                                Limpar
+
+                            </button>
+
+                            <button
+                                type="button"
+                                id="cancelarAssinatura"
+                                class="btn-secondary">
+
+                                Cancelar
+
+                            </button>
+
+                            <button
+                                type="button"
+                                id="confirmarAssinatura"
+                                class="btn-principal">
+
+                                Confirmar assinatura
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
