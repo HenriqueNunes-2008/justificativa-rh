@@ -127,6 +127,8 @@ margin-bottom:20px;
 input,
 textarea{
 
+width:100%;
+
 padding:12px;
 
 border:1px solid #ddd;
@@ -134,6 +136,8 @@ border:1px solid #ddd;
 border-radius:8px;
 
 font-size:15px;
+
+box-sizing:border-box;
 
 }
 #assinaturaCanvas{
