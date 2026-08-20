@@ -59,6 +59,25 @@ def bloquear_usuario(id):
     return usuario
 
 
+def solicitar_redefinicao_senha(email):
+    """
+    Marca que o usuário solicitou redefinição de senha.
+    """
+
+    usuario = Usuario.query.filter_by(
+        email=email.strip().lower()
+    ).first()
+
+    if usuario is None:
+        return None
+
+    usuario.redefinir_senha = True
+
+    db.session.commit()
+
+    return usuario
+
+
 def redefinir_senha(
     id,
     nova_senha
@@ -72,6 +91,8 @@ def redefinir_senha(
     usuario.senha = generate_password_hash(
         nova_senha
     )
+
+    usuario.redefinir_senha = False
 
     db.session.commit()
 

@@ -160,7 +160,9 @@ def cadastro():
 
             status="PENDENTE",
 
-            perfil="RH"
+            perfil="RH",
+
+            redefinir_senha=False
 
         )
 
@@ -182,6 +184,51 @@ def cadastro():
 
     return redirect(
         url_for("justificativas.index")
+    )
+
+
+@auth.post("/esqueci-minha-senha")
+def solicitar_redefinicao():
+    """
+    Solicita ao TI a redefinição de senha.
+    """
+
+    email = request.form.get("email", "").strip().lower()
+
+    if not email:
+
+        flash(
+            "Informe um e-mail válido.",
+            "error"
+        )
+
+        return redirect(
+            url_for(
+                "justificativas.index",
+                login="1"
+            )
+        )
+
+    usuario = Usuario.query.filter_by(
+        email=email
+    ).first()
+
+    if usuario is not None:
+
+        usuario.redefinir_senha = True
+
+        db.session.commit()
+
+    flash(
+        "Seu pedido de alteração de senha será enviado ao administrador de TI.",
+        "success"
+    )
+
+    return redirect(
+        url_for(
+            "justificativas.index",
+            login="1"
+        )
     )
 
 

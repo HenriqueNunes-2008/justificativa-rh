@@ -40,6 +40,12 @@ class Usuario(db.Model):
         default="RH"
     )
 
+    redefinir_senha = db.Column(
+        db.Boolean,
+        nullable=False,
+        default=False
+    )
+
     criado_em = db.Column(
         db.DateTime,
         default=datetime.utcnow

@@ -16,6 +16,36 @@ const fecharCadastro =
 const abrirCadastro =
     document.getElementById("abrirCadastro");
 
+const recuperacaoModal =
+    document.getElementById("recuperacaoModal");
+
+const abrirRecuperacao =
+    document.getElementById("abrirRecuperacao");
+
+const fecharRecuperacao =
+    document.getElementById("fecharRecuperacao");
+
+const voltarLoginRecuperacao =
+    document.getElementById("voltarLoginRecuperacao");
+
+const abrirModal = (modal) => {
+
+    if (!modal) return;
+
+    loginModal?.classList.remove("active");
+    cadastroModal?.classList.remove("active");
+    recuperacaoModal?.classList.remove("active");
+
+    modal.classList.add("active");
+
+};
+
+const fecharModalAtual = () => {
+    loginModal?.classList.remove("active");
+    cadastroModal?.classList.remove("active");
+    recuperacaoModal?.classList.remove("active");
+};
+
 
 // ------------------
 // Abrir Login
@@ -27,9 +57,7 @@ if (abrirLogin) {
 
         e.preventDefault();
 
-        cadastroModal?.classList.remove("active");
-
-        loginModal?.classList.add("active");
+        abrirModal(loginModal);
 
     });
 
@@ -61,9 +89,7 @@ if (abrirCadastro) {
 
         e.preventDefault();
 
-        loginModal?.classList.remove("active");
-
-        cadastroModal?.classList.add("active");
+        abrirModal(cadastroModal);
 
     });
 
@@ -79,6 +105,47 @@ if (fecharCadastro) {
     fecharCadastro.addEventListener("click", () => {
 
         cadastroModal?.classList.remove("active");
+
+    });
+
+}
+
+
+// ------------------
+// Abrir recuperação de senha
+// ------------------
+
+if (abrirRecuperacao) {
+
+    abrirRecuperacao.addEventListener("click", (e) => {
+
+        e.preventDefault();
+
+        abrirModal(recuperacaoModal);
+
+    });
+
+}
+
+
+if (fecharRecuperacao) {
+
+    fecharRecuperacao.addEventListener("click", () => {
+
+        recuperacaoModal?.classList.remove("active");
+
+        loginModal?.classList.add("active");
+
+    });
+
+}
+
+if (voltarLoginRecuperacao) {
+
+    voltarLoginRecuperacao.addEventListener("click", () => {
+
+        recuperacaoModal?.classList.remove("active");
+        loginModal?.classList.add("active");
 
     });
 
@@ -103,6 +170,12 @@ window.addEventListener("click", (e) => {
 
     }
 
+    if (e.target === recuperacaoModal) {
+
+        recuperacaoModal?.classList.remove("active");
+
+    }
+
 });
 
 const parametros =
@@ -112,16 +185,21 @@ const parametros =
 
 if (parametros.get("login") === "1") {
 
-    cadastroModal?.classList.remove("active");
-
+    fecharModalAtual();
     loginModal?.classList.add("active");
 
 }
 
 if (parametros.get("cadastro") === "1") {
 
-    loginModal?.classList.remove("active");
-
+    fecharModalAtual();
     cadastroModal?.classList.add("active");
+
+}
+
+if (parametros.get("recuperacao") === "1") {
+
+    fecharModalAtual();
+    recuperacaoModal?.classList.add("active");
 
 }

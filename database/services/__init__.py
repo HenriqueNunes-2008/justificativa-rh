@@ -7,5 +7,6 @@ from .usuario_service import (
     buscar_usuario,
     ativar_usuario,
     bloquear_usuario,
+    solicitar_redefinicao_senha,
     redefinir_senha
 )
