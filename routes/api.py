@@ -176,6 +176,8 @@ def listar_usuarios_api():
 
             "perfil": usuario.perfil,
 
+            "redefinir_senha": usuario.redefinir_senha,
+
             "criado_em": usuario.criado_em.strftime("%d/%m/%Y")
 
         }
@@ -221,18 +223,24 @@ def bloquear_usuario_api(id):
 @api.patch("/usuarios/<int:id>/senha")
 def redefinir_senha_api(id):
     """
-    Redefine a senha do usuário.
+    Redefine a senha do usuário e limpa a necessidade de redefinição.
     """
     validar_ti()
 
-    dados = request.get_json()
+    dados = request.get_json() or {}
+
+    nova_senha = dados.get("senha")
+
+    if not nova_senha or len(str(nova_senha).strip()) < 6:
+
+        return jsonify({
+            "success": False,
+            "message": "A senha deve possuir pelo menos 6 caracteres."
+        }), 400
 
     redefinir_senha(
-
         id,
-
-        dados["senha"]
-
+        nova_senha
     )
 
     return jsonify({

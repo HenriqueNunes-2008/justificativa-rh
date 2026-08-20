@@ -18,24 +18,6 @@
 
         </h2>
 
-        {% with mensagens = get_flashed_messages(with_categories=true) %}
-
-            {% if mensagens %}
-
-                {% for categoria, mensagem in mensagens %}
-
-                    <div class="alert {{ categoria }}">
-
-                        {{ mensagem }}
-
-                    </div>
-
-                {% endfor %}
-
-            {% endif %}
-
-        {% endwith %}
-
         <form
             method="POST"
             action="{{ url_for('auth.cadastro') }}">
@@ -103,7 +85,7 @@
     Já possui conta?
 
     <a
-        href="#"
+        href="{{ url_for('justificativas.index', login='1') }}"
         id="abrirLogin">
 
         Entrar

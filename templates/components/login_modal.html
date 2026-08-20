@@ -18,24 +18,6 @@
 
         </h2>
 
-        {% with mensagens = get_flashed_messages(with_categories=true) %}
-
-            {% if mensagens %}
-
-                {% for categoria, mensagem in mensagens %}
-
-                    <div class="alert {{ categoria }}">
-
-                        {{ mensagem }}
-
-                    </div>
-
-                {% endfor %}
-
-            {% endif %}
-
-        {% endwith %}
-
         <form
             method="POST"
             action="{{ url_for('auth.login') }}">
@@ -90,7 +72,7 @@
         <p>
 
             <a
-                href="#"
+                href="{{ url_for('justificativas.index', login='1', recuperacao='1') }}"
                 id="abrirRecuperacao">
 
                 Esqueci minha senha
@@ -98,6 +80,69 @@
             </a>
 
         </p>
+
+    </div>
+
+</div>
+
+<div
+    class="modal"
+    id="recuperacaoModal">
+
+    <div class="modal-content">
+
+        <button
+            class="fechar-modal"
+            id="fecharRecuperacao">
+
+            &times;
+
+        </button>
+
+        <h2>
+
+            Redefinir senha
+
+        </h2>
+
+        <p>
+
+            Seu pedido de alteração de senha será enviado ao administrador de TI.
+
+        </p>
+
+        <form
+            method="POST"
+            action="{{ url_for('auth.solicitar_redefinicao') }}">
+
+            <input
+                type="email"
+                name="email"
+                placeholder="E-mail cadastrado"
+                required>
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn-secundario"
+                    id="voltarLoginRecuperacao">
+
+                    Voltar
+
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-principal">
+
+                    Enviar
+
+                </button>
+
+            </div>
+
+        </form>
 
     </div>
 

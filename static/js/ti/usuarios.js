@@ -54,6 +54,7 @@ async function carregarUsuarios() {
 
         let totalPendentes = 0;
         let totalBloqueados = 0;
+        let totalRedefinicao = 0;
 
         usuarios.forEach(usuario => {
 
@@ -69,11 +70,21 @@ async function carregarUsuarios() {
 
             }
 
+            if (usuario.redefinir_senha) {
+
+                totalRedefinicao++;
+
+            }
+
+            const nomeComAviso = usuario.redefinir_senha
+                ? `<span class="nome-com-aviso">${usuario.nome}</span><span class="warning-badge">Redefinir senha</span>`
+                : usuario.nome;
+
             tbody.innerHTML += `
 
-                <tr>
+                <tr class="${usuario.redefinir_senha ? "warning-row" : ""}">
 
-                    <td>${usuario.nome}</td>
+                    <td>${nomeComAviso}</td>
 
                     <td>${usuario.email}</td>
 
@@ -142,6 +153,10 @@ async function carregarUsuarios() {
         document.getElementById(
             "usuariosBloqueados"
         ).textContent = totalBloqueados;
+
+        document.getElementById(
+            "usuariosRedefinicao"
+        ).textContent = totalRedefinicao;
 
     }
 

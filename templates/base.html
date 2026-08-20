@@ -69,6 +69,17 @@
 
 <script src="{{ url_for('static', filename='js/assinatura.js') }}"></script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".flash").forEach((flash) => {
+            setTimeout(() => {
+                flash.classList.add("hide");
+                setTimeout(() => flash.remove(), 300);
+            }, 3000);
+        });
+    });
+</script>
+
 {% block scripts %}
 {% endblock %}
 

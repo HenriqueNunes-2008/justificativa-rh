@@ -202,6 +202,10 @@ color:white;
 
 padding:15px;
 
+text-align:center;
+
+vertical-align:middle;
+
 }
 
 td{
@@ -210,11 +214,55 @@ padding:15px;
 
 border-bottom:1px solid #eee;
 
+text-align:center;
+
+vertical-align:middle;
+
 }
 
 tr:hover{
 
 background:#f4f7fb;
+
+}
+
+.admin-table tbody td:first-child {
+
+   text-align:left;
+
+}
+
+.warning-badge {
+
+   display:inline-flex;
+
+   align-items:center;
+
+   justify-content:center;
+
+   background:#fff4cc;
+
+   color:#9a6400;
+
+   border:1px solid #f4c95d;
+
+   border-radius:999px;
+
+   padding:6px 10px;
+
+   font-size:11px;
+
+   font-weight:700;
+
+   letter-spacing:.02em;
+
+   margin-left:10px;
+
+}
+
+.warning-row {
+
+   background:rgba(255, 204, 0, 0.06);
 
 }
 .acoes{
